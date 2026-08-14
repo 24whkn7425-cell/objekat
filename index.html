@@ -1,32 +1,93 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const chatBox = document.getElementById('chat-box');
-    const userInput = document.getElementById('user-input');
-    const sendBtn = document.getElementById('send-btn');
-
-    function appendMessage(sender, text) {
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', sender);
-        messageDiv.innerText = `${sender}: ${text}`;
-        chatBox.appendChild(messageDiv);
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    sendBtn.addEventListener('click', () => {
-        const text = userInput.value.trim();
-        if (text !== '') {
-            appendMessage('Vi', text);
-            userInput.value = '';
-            
-            // Ovde ide povezivanje sa AI servisom
-            setTimeout(() => {
-                appendMessage('AI Konobar', 'Razumem Vas. Primio sam porudžbinu, sredićemo to odmah!');
-            }, 1000);
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Konobar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
-    });
-
-    userInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendBtn.click();
+        header {
+            background-color: #111;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
         }
-    });
-});
+        #chat-box {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .message {
+            padding: 10px 15px;
+            border-radius: 8px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .message.Vi {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+        }
+        .message.AI {
+            background-color: #e4e6eb;
+            color: black;
+            align-self: flex-start;
+        }
+        .input-container {
+            display: flex;
+            padding: 10px;
+            background-color: white;
+            border-top: 1px solid #ddd;
+        }
+        #user-input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            font-size: 16px;
+        }
+        #send-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-left: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #send-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <header>AI Konobar - Vaš digitalni poslovođa</header>
+    
+    <div id="chat-box">
+        <div class="message AI">AI Konobar: Dobro došli! Kako mogu da vam pomognem danas?</div>
+    </div>
+
+    <div class="input-container">
+        <input type="text" id="user-input" placeholder="Napišite poruku..." autocomplete="off">
+        <button id="send-btn">Pošalji</button>
+    </div>
+
+    <script src="Alconobar.js"></script>
+</body>
+</html>
