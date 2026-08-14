@@ -16,10 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (text !== '') {
             appendMessage('Vi', text);
             userInput.value = '';
-            // Ovdje ide povezivanje s AI servisom
+            
+            // Ovde ide povezivanje sa AI servisom
             setTimeout(() => {
-                appendMessage('AI Konobar', 'Kako vam mogu pomoći danas?');
+                appendMessage('AI Konobar', 'Razumem Vas. Primio sam porudžbinu, sredićemo to odmah!');
             }, 1000);
+        }
+    });
+
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendBtn.click();
         }
     });
 });
