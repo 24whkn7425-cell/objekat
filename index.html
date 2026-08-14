@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moj AI Konobar</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        #chat-box { border: 1px solid #ccc; height: 300px; padding: 10px; overflow-y: scroll; margin-bottom: 10px; }
+        .message { margin-bottom: 5px; }
+        .message.Vi { font-weight: bold; }
+    </style>
 </head>
 <body>
     <h1>Dobrodošli u restoran!</h1>
+    
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Napišite poruku...">
+    <button id="send-btn">Pošalji</button>
+
+    <script src="Alconobar.js"></script>
 </body>
 </html>
